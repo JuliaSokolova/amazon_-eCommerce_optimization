@@ -1,2 +1,5 @@
+#ignore folders
 data/
+data2/
+dataML/
 .csv
