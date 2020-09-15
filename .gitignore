@@ -3,3 +3,7 @@ data/
 data2/
 dataML/
 .csv
+.ipynb_checkpoints/
+.ipynb_checkpoints
+notebooks/
+.DS_Store
