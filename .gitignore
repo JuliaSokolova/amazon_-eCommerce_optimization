@@ -5,6 +5,6 @@ dataML/
 .csv
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
-
 notebooks/
+*/notebooks/*
 .DS_Store
