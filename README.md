@@ -1,6 +1,8 @@
 
 # amazon_-eCommerce_optimization
 
+<p align="center"><img width=80% src=https://github.com/JuliaSokolova/amazon_-eCommerce_optimization/blob/master/img/Screen%20Shot%202020-09-15%20at%209.10.33%20AM.png> 
+
 This project includes an analysis of several advertizing campaign results of big consumer brands on amazon.com, with a goal to look for potential ways of optimization to improve ROIs.
 
 Technology I used:
