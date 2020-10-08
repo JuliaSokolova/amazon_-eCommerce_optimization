@@ -78,6 +78,39 @@ For brand ads, top search works much worse than other placement: 7.07 vs 12.32 R
 For product ads, top search on first page of results perform the best: 4.317 vs 2.083 on the rest of the search.
 The ads on product pages and off-amazon remarketing work terrible: 1.094 and 0.791.
 
+## Search EDA
+
+Let's take a look into keywords analysiz. 
+My goal was to analyze into each keyword performance in dynamic. 
+For this part, I used plotly library.
+
+### Keyword performance
+
+The charts below shows the performance for search term 'hand sanitizer' across all campaigns.
+
+<p align="center"><img width=70% src=https://github.com/JuliaSokolova/amazon_-eCommerce_optimization/blob/master/img/search-impressions.png>
+ 
+ <p align="center"><img width=70% src=https://github.com/JuliaSokolova/amazon_-eCommerce_optimization/blob/master/img/search-clicks.png>
+
+<p align="center"><img width=70% src=https://github.com/JuliaSokolova/amazon_-eCommerce_optimization/blob/master/img/search-sales.png>
+
+### Future prognosis 
+
+To extrapolate future sales, I used Prophet time series. 
+Below is a graph that predicts sales coming from keyword 'hand soap' for two upcoming months.
+
+<p align="center"><img width=70% src=https://github.com/JuliaSokolova/amazon_-eCommerce_optimization/blob/master/img/search-sales-prognosis.png>
+  
+We can also see this search term sales overall trend, and weekly fluctuation component.
+
+<p align="center"><img width=70% src=https://github.com/JuliaSokolova/amazon_-eCommerce_optimization/blob/master/img/search-forecast-components.png>
+  
+### Campaign analysis
+
+Each Amazon ad campaign can have its own unique settings, therefore it might be a good idea to study search term performance for each campaign separatly. 
+
+
+
 
 
 ## Results:
