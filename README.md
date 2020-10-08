@@ -104,13 +104,6 @@ Below is a graph that predicts sales coming from keyword 'hand soap' for two upc
 We can also see this search term sales overall trend, and weekly fluctuation component.
 
 <p align="center"><img width=70% src=https://github.com/JuliaSokolova/amazon_-eCommerce_optimization/blob/master/img/search-forecast-components.png>
-  
-### Campaign analysis
-
-Each Amazon ad campaign can have its own unique settings, therefore it might be a good idea to study search term performance for each campaign separatly. 
-
-
-
 
 
 ## Results:
