@@ -30,7 +30,7 @@ def search_term_data(term, search, search_details):
 
     Returns
     -------
-    pandas DataFrame:
+    pandas DataFrame
         Data about search results for specified search term
     '''
     search_term_ids = search[search.term == term].id.unique()
@@ -72,6 +72,42 @@ def plot_search_charts(term, search, search_details):
     sales = px.line(data, x='date', y=['spend', 'sales'], title=f'Total sales for search term: {term}')
     sales.update_xaxes(rangeslider_visible=True)
     sales.show()
+
+def search_term_data_campaign(term, search, search_details, camp):
+    '''
+    Parameters
+    ----------
+    term: string
+        Search term used in one / many campaigns
+    search: pandas DataFrame
+        Contains info about all search terms
+    search_details: pandas DataFrame
+        Contains info about details for each search session
+    camp: number
+        Campaign ID
+    Returns
+    -------
+    data: pandas DataFrame
+        Data about search results for specified search term and specified campaign       
+    '''
+    search_details = search_details.join(search.set_index('id'), on = 'search_id')
+    search_details = search_details.drop(columns = ['target', 'Unnamed: 0'])
+    mask = (search_details.term == term) & (search_details.campaign == camp)
+    data = search_details[mask]
+    data = data.groupby(data.date).sum().reset_index()
+    data = data.drop(columns = ['search_id', 
+                     'ACoS', 
+                     'campaign', 
+                     'conversions_rate', 
+                     'advertised_asin_units', 
+                     'advertised_asin_sales',
+                     'advertised_brand_units',
+                     'advertised_brand_sales'
+                    ])
+    return data
+
+
+
 
 if __name__ == '__main__':
 
