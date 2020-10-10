@@ -109,6 +109,13 @@ We can also see this search term sales overall trend, and weekly fluctuation com
 ## Product analysis
 
 Next, let's see how each product is performing.
+Here is a brief overview of one product, hand sanitizer, performance.
+First image showes the funnel impressions -> clicks -> orders.
+Second showes overall money spent on ads -> sales.
+
+<p align="center"><img width=70% src=https://github.com/JuliaSokolova/amazon_-eCommerce_optimization/blob/master/img/product_sales_funnel.png>
+
+<p align="center"><img width=70% src=https://github.com/JuliaSokolova/amazon_-eCommerce_optimization/blob/master/img/product_sales_funnel1.png>
 
 ### Product performance by campaign
 
@@ -122,11 +129,30 @@ For example, this is how our ads are performing for product A (hand sanitizer):
 Below are the graphs for impressions, clicks and sales for the product A, hand sanitizer, across all campaigns.
 There is also an option to look into each campaign individually.
 
+<p align="center"><img width=70% src=https://github.com/JuliaSokolova/amazon_-eCommerce_optimization/blob/master/img/product_impressions.png>
+
+<p align="center"><img width=70% src=https://github.com/JuliaSokolova/amazon_-eCommerce_optimization/blob/master/img/product_clicks.png>
+ 
+<p align="center"><img width=70% src=https://github.com/JuliaSokolova/amazon_-eCommerce_optimization/blob/master/img/product_sales.png>
+  
+### Sales prognosis
+
+Using Prophet time series, I build prognosis for each product.
+The graph below showes the sales prognosis for hand sanitizer for 2 weeks, and trend components - overal trend and weekly fluctuation.
+
+<p align="center"><img width=70% src=https://github.com/JuliaSokolova/amazon_-eCommerce_optimization/blob/master/img/product_sales_prognosis.png>
+ 
+<p align="center"><img width=70% src=https://github.com/JuliaSokolova/amazon_-eCommerce_optimization/blob/master/img/product_sales_prognosis_components.png>
+
+### Factors, affecting sales
+
+Finally, I wanted to look into factors affecting sales.
+To do that, I built a ML model (I used  Random Forest Regressor from Sklearn), and used SHAP values to visualize features importance.
+
 
 
 ## Results:
 
 Found ways to increase ROIs by 4x times via campaign and targeting settings modifications
 
-More details about this project are [here](https://docs.google.com/presentation/d/e/2PACX-1vQp3ZvqwVdC_LDtXzRin33k4WeS9s8xXqv1vffy32mdbfrt-R1X8DX-ZE9OkEhMOkUeupo1J8sqRATx/pub?start=false&loop=false&delayms=3000).
 
