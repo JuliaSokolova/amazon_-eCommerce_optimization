@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import plotly.express as px
 
 def get_ads_data(campaign, ad_group, ad_group_details):
     ads_data = ad_group_details.join(ad_group.set_index('id'), on='ad_groups')
@@ -7,7 +8,7 @@ def get_ads_data(campaign, ad_group, ad_group_details):
     ads_data = ads_data.join(campaign.set_index('id'), on='campaign')
     return ads_data
 
-def get_product_data_by_campaign(name, ads_data):
+def get_product_data_by_campaign(name, ads_data, campaign):
     product = ads_data[ads_data.asin == name]
     product = product.groupby(product.campaign)[
         'impressions', 
@@ -41,6 +42,7 @@ def get_product_data_by_day(name, ads_data):
     sales = px.line(X, x='date', y=['spend', 'sales'], title=f'Total sales for product: {name}')
     sales.update_xaxes(rangeslider_visible=True)
     sales.show()
+
 
 
 
