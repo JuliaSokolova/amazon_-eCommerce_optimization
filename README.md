@@ -106,6 +106,24 @@ We can also see this search term sales overall trend, and weekly fluctuation com
 <p align="center"><img width=70% src=https://github.com/JuliaSokolova/amazon_-eCommerce_optimization/blob/master/img/search-forecast-components.png>
 
 
+## Product analysis
+
+Next, let's see how each product is performing.
+
+### Product performance by campaign
+
+I first did a high-level analytics of data grouped by campaign.
+For example, this is how our ads are performing for product A (hand sanitizer):
+
+<p align="center"><img width=100% src=https://github.com/JuliaSokolova/amazon_-eCommerce_optimization/blob/master/img/product_overview_by_campaign.png>
+
+### Product performance in dynamics
+
+Below are the graphs for impressions, clicks and sales for the product A, hand sanitizer, across all campaigns.
+There is also an option to look into each campaign individually.
+
+
+
 ## Results:
 
 Found ways to increase ROIs by 4x times via campaign and targeting settings modifications
