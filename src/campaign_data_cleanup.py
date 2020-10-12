@@ -95,11 +95,36 @@ def placement_cleanup(placement, placement_detail, campaign):
 
     return placement_result
 
+def ad_cleanup(ad_group, ad_group_detail, campaign):
+    '''
+    Parameters
+    ----------
+    ad_group: pandas DataFrame
+        Contains info about ad groups
+    ad_group_detail: pandas DataFrame
+        Contains info about ad groups details
+    campaign: pandas DataFrame
+        Contains info about ad campaigns
+
+    Returns
+    -------
+    pandas DataFrame
+        combined data about campaigns, ads and ad details  
+    '''
+    ad_group = ad_group.drop(columns = 'Unnamed: 0')
+    #Add campaign ID to ad groups
+    ad_group_details = ad_group_details.join(ad_group.set_index('id'), on='ad_groups')
+    ad_group_details = ad_group_details.drop(['name'], axis=1)
+    ad_group_details = ad_group_details.join(campaign.set_index('id'), on='campaign')
+
+    return ad_group_details
+
+
 
     
 if __name__ == '__main__':
 
-    #import campaign data
+    # import campaign data
     campaign = pd.read_csv('data/AMSCampaign.csv')
     campaign_details = pd.read_csv('data/AMSCampaignDetail.csv')
     placement = pd.read_csv('data/AMSPlacement.csv')
@@ -111,4 +136,6 @@ if __name__ == '__main__':
     bad_campaigns = zero_sales_campaigns(campaign_results)
     for camp in bad_campaigns:
         print(campaign_details[campaign_details.campaign == camp].sum())
+
+    # print placement result table
     placement_result = placement_cleanup(placement, placement_detail, campaign)

@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import plotly.express as px
+from plotly import graph_objects as go
 
 def get_ads_data(campaign, ad_group, ad_group_details):
     ads_data = ad_group_details.join(ad_group.set_index('id'), on='ad_groups')
@@ -42,6 +43,26 @@ def get_product_data_by_day(name, ads_data):
     sales = px.line(X, x='date', y=['spend', 'sales'], title=f'Total sales for product: {name}')
     sales.update_xaxes(rangeslider_visible=True)
     sales.show()
+
+def sales_funnel(product):
+    data = product[['impressions', 'clicks', 'CtR', 'CpC', 'spend', 'RoAS', 'sales', 'orders']]
+    funnel = data[['impressions', 'clicks', 'spend', 'orders', 'sales']]
+    funnel = funnel.sum()
+
+    # impressions -> clicks -> orders   
+    fig = go.Figure(go.Funnel(
+        y = ["Impressions", "Clicks", "Orders"],
+        x = [funnel.impressions, funnel.clicks, funnel.orders]))
+    fig.show()
+
+    # spent on ads -> sales
+    fig1 = go.Figure(go.Funnel(
+        y = ["Ads costs, $", "Sales, $"],
+        x = [funnel.spend, funnel.sales]))
+    fig1.show()
+
+
+
 
 
 
