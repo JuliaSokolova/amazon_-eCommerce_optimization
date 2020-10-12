@@ -149,10 +149,62 @@ The graph below showes the sales prognosis for hand sanitizer for 2 weeks, and t
 Finally, I wanted to look into factors affecting sales.
 To do that, I built a ML model (I used  Random Forest Regressor from Sklearn), and used SHAP values to visualize features importance.
 
+In my model, I used the following features to predict sales:
+- impressions
+- clicks
+- CTR
+- CpC
+- money spend
+- portfolio
+- daily budget
+
+Those features have different affect on the outcome (sales). A high-level view can be drawn from the model itself, by plotting the featire importance parameters:
+```
+importances = rforest.feature_importances_
+indices = np.argsort(importances)
+features = Xtrain.columns
+plt.title('Feature Importances')
+plt.barh(range(len(indices)), importances[indices], color='b', align='center')
+plt.yticks(range(len(indices)), [features[i] for i in indices])
+plt.xlabel('Relative Importance')
+plt.show()
+```
+<p align="center"><img width=70% src=https://github.com/JuliaSokolova/amazon_-eCommerce_optimization/blob/master/img/feature_importance.png>
+  
+This graph showes the number of clicks and money spent are the most important once (which makes sense), but how excactly do they affect sales? To understand the model behavior better, I looked into SHAP values.
+
+SHAP values show the importance of each feature by comparing what a model predict with and without the feature. In other words, each SHAP value measures how much each feature in our model contributes, either positively or negatively, to each prediction.
+<p align="center"><img width=70% src=https://github.com/JuliaSokolova/amazon_-eCommerce_optimization/blob/master/img/1_-4XmgZPoqv3mCdaQkEbhxA.png>
+  
+SHAP summary plot shows the positive and negative relationships of the predictors with the target variable (sales) for each factor. Each dot represent one observation of training data. The graph is quite complex, so let me explain it.
+- Feature importance: Variables are ranked in descending order.
+- Impact: The horizontal location shows whether the effect of that value is associated with a higher or lower prediction.
+- Original value: Color of the dot shows whether that variable is high (in red) or low (in blue) for that observation.
+- Correlation: A high level of the “click” feature has a high and positive impact on the sales. The “high” comes from the red color, and the “positive” impact is shown on the X-axis. Similarly, we will say high number of “impressions” is negatively correlated with the target variable (sales).
+  
+<p align="center"><img width=70% src=https://github.com/JuliaSokolova/amazon_-eCommerce_optimization/blob/master/img/shap_summary.png>
+  
+
+We can look in depth into each feature's behavior. For example, let's see how the cost per click affects our sales. 
 
 
-## Results:
+<p align="center"><img width=70% src=https://github.com/JuliaSokolova/amazon_-eCommerce_optimization/blob/master/img/CpC.png>
+  
+This graph is called 'The partial dependence plot'. It shows the marginal effect that one or two variables have on the predicted outcome. It tells whether the relationship between the target and the variable is linear, monotonic, or more complex.
+In our case, the change of cost clicks doesn't seem to affect much the outcome (sales), thought there is a slight linear dependance in between them. 
+SHAP also shows that CpC iteracts with how much money we spent frequently.
 
-Found ways to increase ROIs by 4x times via campaign and targeting settings modifications
+For each observation, we can look into plot for all features called force plot. Below is a plot for our 12th observation. In this case, our total sale was $70.99. The base value (average) for our model is $54.44, and the major factor that pushed the sales up were clikcs - we had 7 of those. 
+
+<p align="center"><img width=70% src=https://github.com/JuliaSokolova/amazon_-eCommerce_optimization/blob/master/img/shap_force_plot.png>
+  
+ Combined together, all observation 
+  
+To sum up, I plot the overall importance & the directions each feature affects sales. In our case, high clicks, CTR, CpC and daily budget will increase sales, while high impressions can lower down the sales.
+
+<p align="center"><img width=70% src=https://github.com/JuliaSokolova/amazon_-eCommerce_optimization/blob/master/img/shap_overview.png>
+  
 
 
+## Next step:
+Moving on, I'd like to create interactive webpage with the features described above to provide clear and detailed information about each advertizing campaign, search term or product.
