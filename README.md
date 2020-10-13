@@ -8,7 +8,7 @@ This project includes an analysis of several advertizing campaign results of big
 Technology I used:
 - Prophet time series to forecast potential sales.
 - Random Forest Regressor from Sklearn to predict factors affecting sales 
-- SHapley Additive exPlanations (Shap Values) algorithms for the model interpretation. 
+- SHapley Additive exPlanations (SHAP Values) algorithms for the model interpretation. 
 
 
 
