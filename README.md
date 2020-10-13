@@ -200,7 +200,7 @@ For each observation, we can look into plot for all features called force plot. 
   
 ### Summary
 
-The plot belov shows simple interpretation of all feature importance and effects. The red color means a feature is positively correlated with the target variable.
+The plot belov shows simple interpretation of all feature importances and effects. The red color means a feature is positively correlated with the target variable.
 In this model, high clicks, CTR, CpC and daily budget will increase sales.  
 High impressions lower the sales down.
 
