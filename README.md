@@ -198,9 +198,11 @@ For each observation, we can look into plot for all features called force plot. 
 
 <p align="center"><img width=70% src=https://github.com/JuliaSokolova/amazon_-eCommerce_optimization/blob/master/img/shap_force_plot.png>
   
-## Summary
+### Summary
 
-I plot the overall importance & the directions each feature affects sales. In our case, high clicks, CTR, CpC and daily budget will increase sales, while high impressions can lower down the sales.
+The plot belov shows simple interpretation of all feature importance and effects. The red color means a feature is positively correlated with the target variable.
+In this model, high clicks, CTR, CpC and daily budget will increase sales.  
+High impressions lower the sales down.
 
 <p align="center"><img width=70% src=https://github.com/JuliaSokolova/amazon_-eCommerce_optimization/blob/master/img/shap_overview.png>
   
